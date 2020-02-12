@@ -12,21 +12,19 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 
+import model.data_structures.Cola;
 import model.data_structures.Comparendo;
 
-/**
- * Definicion del modelo del mundo
- *
- */
+//Solucion de carga de datos publicada al curso Estructuras de Datos 2020-10
 public class Modelo {
 
 	public static String PATH = "./data/comparendos_dei_2018_small.geojson";
 	//	public static String PATH = "./data/comparendos_dei_2018.geojson";
 
 
-	public List<Comparendo> cargarDatos() {
+	public Cola cargarDatos() {
 
-		List<Comparendo> datos = new ArrayList<>();
+		Cola datos = new Cola<>();
 
 		JsonReader reader;
 		try {
@@ -57,7 +55,7 @@ public class Modelo {
 				c.latitud = e.getAsJsonObject().get("geometry").getAsJsonObject().get("coordinates").getAsJsonArray()
 						.get(1).getAsDouble();
 
-				datos.add(c);
+				datos.enqueue(c);
 			}
 
 		} catch (FileNotFoundException | ParseException e) {

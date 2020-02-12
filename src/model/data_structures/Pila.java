@@ -17,7 +17,7 @@ public class Pila <T >{
 
 
 
-	public void push( T dato )
+	public T push( T dato )
 
 	{
 		Nodo nuevo = new Nodo(dato);
@@ -32,6 +32,8 @@ public class Pila <T >{
 
 			tamano++;
 		}
+		
+		return dato;
 	}
 
 
@@ -47,7 +49,7 @@ public class Pila <T >{
 		Nodo devolver = primero;
 		if(tamano == 0)
 		{
-			primero = null;
+			return null;
 		}
 		else if(tamano != 0)
 		{

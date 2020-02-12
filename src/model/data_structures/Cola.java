@@ -17,6 +17,16 @@ public class Cola<T> {
 		tamano = 0;
 	}
 	
+	public Nodo darPrimero()
+	{
+		return primero;
+	}
+	
+	public Nodo darUltimo()
+	{
+		return ultimo;
+	}
+	
 	public int darTamano() {
 		return tamano;
 	}
@@ -27,11 +37,10 @@ public class Cola<T> {
 		else return true;
 	}
 
-	public void enqueue(T dato)
+	public T enqueue(T dato)
 	{
-		
 		Nodo nuevo = new Nodo (dato);
-		if(tamano == 0)
+		if(esVacio())
 		{
 			primero = nuevo;
 			ultimo = nuevo;
@@ -39,10 +48,16 @@ public class Cola<T> {
 		}
 		else 
 		{
-			ultimo.setSiguiente(nuevo);
+			if(tamano == 1) primero.setSiguiente(nuevo);
+			else {
+				ultimo.setSiguiente(nuevo);
+				}
+			
 			ultimo = nuevo;
 			tamano ++;
 		}
+		
+		return dato;
 	}
 	
 	public Nodo dequeue()
@@ -57,6 +72,7 @@ public class Cola<T> {
 		{
 			primero = primero.getSiguiente();
 		}
+		
 		else return null;
 		tamano--;
 		return eliminar;
