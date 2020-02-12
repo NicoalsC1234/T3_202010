@@ -1,35 +1,33 @@
 package model.data_structures;
 
-public class Nodo <T extends Comparable <T>>{
 
-	private  Nodo siguiente;
-	
-	private  T actual;
-	
+
+public class Nodo <T> {
+
+	private T actual;
+
+	private Nodo siguiente;
+
 	public Nodo(T dato)
 	{
-		siguiente = null;
-		
 		actual = dato;
-		
+		siguiente = null;
 	}
-	
-	public Nodo darSiguiente(){
-		return siguiente;
-	}
-	
-	public void cambiarSiguiente(Nodo dato)
-	{
-		siguiente = dato;
-	}
-	
-	public T darActual()
-	{
+
+	public T getActual() {
 		return actual;
 	}
-	
-	public void cambiarActual(T dato)
-	{
-		actual = dato;
+
+	public void setActual(T actual) {
+		this.actual = actual;
 	}
+
+	public Nodo getSiguiente() {
+		return siguiente;
+	}
+
+	public void setSiguiente(Nodo siguiente) {
+		this.siguiente = siguiente;
+	}
+
 }

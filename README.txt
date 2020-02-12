@@ -1,3 +1,2 @@
-Nicolas Guerrero  201912737
-Juan David Becerra 
-3 Semestre
+Juan David Becerra Romero - 201911588
+Nicolás Chalee Guerrero - 201912737
