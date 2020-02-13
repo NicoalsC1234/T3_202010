@@ -24,4 +24,7 @@ public class Comparendo {
 	
 	public double latitud;
 	
+	
+	
+	
 }

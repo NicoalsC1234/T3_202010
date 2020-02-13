@@ -12,10 +12,6 @@ public class Controller <T extends Comparable<T>>{
 	
 	private View view;
 	
-	private int i = 0;
-	
-	private String dato = "";
-	
 	public Controller ()
 	{
 		view = new View();
@@ -45,25 +41,27 @@ public class Controller <T extends Comparable<T>>{
 	                    case 0:
 	              
 	                    	modelo = new Modelo();
-	                    	view.printMessage("Se ha creado la Lista Enlazada");
+	                    	view.printMessage("Se ha creado");
 	                    	break;
 	                    	
 	                    case 1: 
 	                    	
-	                    	dato = reader.next();
-	                    	modelo.agregar(dato);
-	                    	view.printMessage("Se ha agregado un dato nuevo");
+	                    	modelo.cargarDatos();
+	                    	view.printMessage("Se han cargado los datos");
 	                    	break;
 	                    		           
-	        } catch (InputMismatchException e) {
+	                } 
+	            }
+	        }
+	                
+	            
+	            catch (InputMismatchException e) {
 
 	            run();
 
 	        }
 
 	    }
-		
-	
-}
+
 	 }
-}
+

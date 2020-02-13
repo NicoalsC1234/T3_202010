@@ -15,7 +15,10 @@ import com.google.gson.stream.JsonReader;
 import model.data_structures.Cola;
 import model.data_structures.Comparendo;
 
-//Solucion de carga de datos publicada al curso Estructuras de Datos 2020-10
+/**
+ * Definicion del modelo del mundo
+ *
+ */
 public class Modelo {
 
 	public static String PATH = "./data/comparendos_dei_2018_small.geojson";
@@ -24,7 +27,7 @@ public class Modelo {
 
 	public Cola cargarDatos() {
 
-		Cola datos = new Cola<>();
+		Cola datos = new Cola();
 
 		JsonReader reader;
 		try {
