@@ -19,10 +19,14 @@ import model.data_structures.Comparendo;
  * Definicion del modelo del mundo
  *
  */
-public class Modelo {
+public class Modelo <T> {
 
 	public static String PATH = "./data/comparendos_dei_2018_small.geojson";
 	//	public static String PATH = "./data/comparendos_dei_2018.geojson";
+	
+	public int tamano = 0;
+	
+	public T primero = null;
 
 
 	public Cola cargarDatos() {
@@ -59,6 +63,8 @@ public class Modelo {
 						.get(1).getAsDouble();
 
 				datos.enqueue(c);
+				tamano = datos.darTamano();
+				primero = (T)datos.darPrimero();
 			}
 
 		} catch (FileNotFoundException | ParseException e) {

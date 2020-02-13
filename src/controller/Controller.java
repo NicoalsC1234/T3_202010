@@ -40,15 +40,13 @@ public class Controller <T extends Comparable<T>>{
 
 	                    case 0:
 	              
-	                    	modelo = new Modelo();
+	                    	modelo.cargarDatos();
+	                    	T primero = (T) modelo.primero;
+	                    	int numero = modelo.tamano;
 	                    	view.printMessage("Se ha creado");
 	                    	break;
 	                    	
-	                    case 1: 
-	                    	
-	                    	modelo.cargarDatos();
-	                    	view.printMessage("Se han cargado los datos");
-	                    	break;
+	                  
 	                    		           
 	                } 
 	            }
