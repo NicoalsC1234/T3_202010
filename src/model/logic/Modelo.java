@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -14,6 +15,8 @@ import com.google.gson.stream.JsonReader;
 
 import model.data_structures.Cola;
 import model.data_structures.Comparendo;
+import model.data_structures.Nodo;
+
 
 /**
  * Definicion del modelo del mundo
@@ -22,11 +25,46 @@ import model.data_structures.Comparendo;
 public class Modelo <T> {
 
 	public static String PATH = "./data/comparendos_dei_2018_small.geojson";
-	//	public static String PATH = "./data/comparendos_dei_2018.geojson";
 	
 	public int tamano = 0;
 	
+	private Cola cola;
+	
+	private Nodo nodo;
+	
 	public T primero = null;
+	
+	public T ultimo = null;
+	
+	public Modelo()
+	{
+		cola = new Cola<Comparendo>();
+	}
+	
+	public int darTamano()
+	{
+		return cola.darTamano();
+	}
+	
+	public void enqueue(String dato)
+	{	
+		cola.enqueue(dato);
+	}
+	
+	public Nodo darPrimero()
+	{
+		return cola.darPrimero();
+	}
+	
+	public Nodo darUltimo()
+	{
+		return cola.darUltimo();
+	}
+	
+	public Nodo dequeue()
+	{
+		return cola.dequeue();
+	}
 
 
 	public Cola cargarDatos() {
@@ -65,6 +103,7 @@ public class Modelo <T> {
 				datos.enqueue(c);
 				tamano = datos.darTamano();
 				primero = (T)datos.darPrimero();
+				ultimo = (T)datos.darUltimo();
 			}
 
 		} catch (FileNotFoundException | ParseException e) {
@@ -73,4 +112,60 @@ public class Modelo <T> {
 		return datos;	
 
 	}
-}
+	
+	public void MostrarTotalComparendosArchivo()
+	{
+		int contador = 0;
+		
+		if (!cola.esVacio())
+		{
+			for (int i = 0; i < cola.darTamano(); i++) {
+				
+				if(cola.getObj(i) == "latitud")
+				{
+					contador++;
+				}
+					
+			}
+			
+		}
+		
+		System.out.println("El total de comparendos en el archivo es: " + contador + ".");
+	}
+	
+	
+	public void MostrarCompMayorOBJECTID()
+	{
+		T mayor = null;
+		int numMayor = 0;
+		if (!cola.esVacio())
+		{
+			for (int i = 0; i < cola.darTamano(); i++) {
+				T es = (T) cola.getObj(i);
+				
+				if((int)cola.getObj(i) == 1)
+				{
+					numMayor = (int)cola.getObj(i);
+					mayor = (T) es;
+					
+				}
+				if( (int)es > numMayor)
+				{
+					mayor = (T) es;
+					
+				}
+					
+			}
+			
+			System.out.println("Datos comparendo con mayor OBJECTID: ");
+			
+		}
+		
+		
+		
+		
+		
+		
+		}
+	}
+
