@@ -12,6 +12,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
+import com.sun.corba.se.impl.orbutil.RepositoryIdUtility;
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import model.data_structures.Cola;
 import model.data_structures.Comparendo;
@@ -25,42 +27,43 @@ import model.data_structures.Nodo;
 public class Modelo <T> {
 
 	public static String PATH = "./data/comparendos_dei_2018_small.geojson";
-	
+
 	public int tamano = 0;
-	
+
 	private Cola cola;
-	
+
 	private Nodo nodo;
-	
+
 	public T primero = null;
-	
+
 	public T ultimo = null;
-	
+
+
 	public Modelo()
 	{
 		cola = new Cola<Comparendo>();
 	}
-	
+
 	public int darTamano()
 	{
 		return cola.darTamano();
 	}
-	
+
 	public void enqueue(String dato)
 	{	
 		cola.enqueue(dato);
 	}
-	
+
 	public Nodo darPrimero()
 	{
 		return cola.darPrimero();
 	}
-	
+
 	public Nodo darUltimo()
 	{
 		return cola.darUltimo();
 	}
-	
+
 	public Nodo dequeue()
 	{
 		return cola.dequeue();
@@ -112,66 +115,72 @@ public class Modelo <T> {
 		return datos;	
 
 	}
-	
-	public void MostrarTotalComparendosArchivo()
+
+	public double[] darMinimax()
 	{
-		int contador = 0;
+		double[] mini = new double[4];
 		
-		if (!cola.esVacio())
+		if(!cola.esVacio())
 		{
+
 			for (int i = 0; i < cola.darTamano(); i++) {
-				
-				if(cola.getObj(i) == "latitud")
-				{
-					contador++;
+				Comparendo es = (Comparendo) getObj(i);
+				double lo1 = es.longitud;
+				double la1 = es.latitud;
+				double lo2 = es.longitud;
+				double la2 = es.latitud;
+				if(es.longitud > lo1)
+					{
+						lo1 = es.longitud;
+						mini[0] = lo1;
+					}
+				if(es.longitud < lo2){
+					mini[1] = lo2;
+					lo2 = es.longitud;
 				}
-					
+				if(es.latitud > la1)
+					{
+						la1 = es.latitud;
+						mini[2] = la1;
+					}
+				if(es.latitud < la2){
+					mini[3] = la2;
+					la2 = es.latitud;
+				}
 			}
-			
 		}
-		
-		System.out.println("El total de comparendos en el archivo es: " + contador + ".");
+		return mini;
 	}
-	
-	
-	public void MostrarCompMayorOBJECTID()
+
+	public Comparendo MostrarCompMayorOBJECTID()
 	{
-		T mayor = null;
+		Comparendo mayor = null;
 		int numMayor = 0;
 		if (!cola.esVacio())
 		{
 			for (int i = 0; i < cola.darTamano(); i++) {
-				T es = (T) cola.getObj(i);
-				
-				if((int)cola.getObj(i) == 1)
+				Comparendo es = (Comparendo) getObj(i);
+				if(es.OBJECTID > mayor.OBJECTID)
 				{
-					numMayor = (int)cola.getObj(i);
-					mayor = (T) es;
-					
+					mayor = es;
 				}
-				if( (int)es > numMayor)
-				{
-					mayor = (T) es;
-					
-				}
-					
 			}
-			
-			System.out.println("Datos comparendo con mayor OBJECTID: ");
-			
 		}
-		
-	}
-	
-	
-	public void zonaMinimax()
-	{
-		
-	}
-	
-	
+		return mayor;
 	}
 
+	public T getObj(int index)
+	{
+		int contador = 0;
+		Nodo n = (Nodo) primero;
+		while(contador < index)
+		{
+			n = n.getSiguiente();
+			contador++;
+		}
+		return (T) n.getActual();
+	}
+}
 
 
 

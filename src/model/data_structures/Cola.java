@@ -78,21 +78,6 @@ public class Cola<T> {
 		return eliminar;
 	}
 	
-	public T getObj(int index)	
-	{
-		int contador = 0;
-		Nodo n = primero;
-		while(contador < index)
-		{
-			n = n.getSiguiente();
-			contador++;
-		}
-		
-		return (T) n.getActual();
-		
-	}
-	
-	//* Clase Cola. 
 	
 	
 }
