@@ -78,7 +78,7 @@ public class Cola<T> {
 		return eliminar;
 	}
 	
-	public T getObj(int index)
+	public T getObj(int index)	
 	{
 		int contador = 0;
 		Nodo n = primero;
@@ -92,6 +92,7 @@ public class Cola<T> {
 		
 	}
 	
+	//* Clase Cola. 
 	
 	
 }
