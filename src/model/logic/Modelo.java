@@ -161,11 +161,17 @@ public class Modelo <T> {
 			
 		}
 		
-		
-		
-		
-		
-		
-		}
 	}
+	
+	
+	public void zonaMinimax()
+	{
+		
+	}
+	
+	
+	}
+
+
+
 
