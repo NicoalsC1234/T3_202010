@@ -77,6 +77,7 @@ public class Cola<T> {
 		tamano--;
 		return eliminar;
 	}
+	//* Prueba
 	
 	
 	
