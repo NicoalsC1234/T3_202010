@@ -26,22 +26,25 @@ import model.data_structures.Nodo;
  */
 public class Modelo <T> {
 
-	public static String PATH = "./data/comparendos_dei_2018_small.geojson";
+	public static String PATH = "./data/comparendos_dei_2018_small (1).geojson";
 
-	public int tamano = 0;
+	public int tamano;
 
 	private Cola cola;
 
 	private Nodo nodo;
 
-	public T primero = null;
+	public Nodo<Comparendo> primero;
 
-	public T ultimo = null;
+	public Nodo<Comparendo> ultimo;
 
 
 	public Modelo()
 	{
 		cola = new Cola<Comparendo>();
+		primero = null;
+		ultimo = null;
+		tamano = 0;
 	}
 
 	public int darTamano()
@@ -105,8 +108,8 @@ public class Modelo <T> {
 
 				datos.enqueue(c);
 				tamano = datos.darTamano();
-				primero = (T)datos.darPrimero();
-				ultimo = (T)datos.darUltimo();
+				primero = datos.darPrimero();
+				ultimo = datos.darUltimo();
 			}
 
 		} catch (FileNotFoundException | ParseException e) {
@@ -154,9 +157,9 @@ public class Modelo <T> {
 
 	public Comparendo MostrarCompMayorOBJECTID()
 	{
-		Comparendo mayor = null;
+		Comparendo mayor =  primero.getActual();
 		int numMayor = 0;
-		if (!cola.esVacio())
+		if (!cola.esVacio() && mayor != null)
 		{
 			for (int i = 0; i < cola.darTamano(); i++) {
 				Comparendo es = (Comparendo) getObj(i);
