@@ -4,33 +4,33 @@ import java.util.Comparator;
 
 public class Cola<T> {
 
-	private Nodo primero; 
-	
-	private Nodo ultimo;
-	
+	public Nodo<T> primero; 
+
+	public Nodo<T> ultimo;
+
 	private int tamano;
-	
+
 	public Cola()
 	{
 		primero = null;
 		ultimo = null;
 		tamano = 0;
 	}
-	
-	public Nodo darPrimero()
+
+	public T darPrimero()
 	{
-		return primero;
+		return primero.getActual();
 	}
-	
-	public Nodo darUltimo()
+
+	public T darUltimo()
 	{
-		return ultimo;
+		return ultimo.getActual();
 	}
-	
+
 	public int darTamano() {
 		return tamano;
 	}
-	
+
 	public boolean esVacio()
 	{
 		if (tamano != 0)return false;
@@ -48,18 +48,14 @@ public class Cola<T> {
 		}
 		else 
 		{
-			if(tamano == 1) primero.setSiguiente(nuevo);
-			else {
-				ultimo.setSiguiente(nuevo);
-				}
-			
+			ultimo.setSiguiente(nuevo);
 			ultimo = nuevo;
 			tamano ++;
 		}
-		
+
 		return dato;
 	}
-	
+
 	public Nodo dequeue()
 	{
 		Nodo eliminar = primero;
@@ -72,13 +68,13 @@ public class Cola<T> {
 		{
 			primero = primero.getSiguiente();
 		}
-		
+
 		else return null;
 		tamano--;
 		return eliminar;
 	}
 	//* Prueba
-	
-	
-	
+
+
+
 }
