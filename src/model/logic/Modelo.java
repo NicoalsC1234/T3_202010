@@ -26,7 +26,7 @@ import model.data_structures.Nodo;
  */
 public class Modelo <T> {
 
-	public static String PATH = "./data/comparendos_dei_2018_small (1).geojson";
+	public static String PATH = "./data/comparendos_dei_2018.geojson"; 
 
 	private Cola<Comparendo> cola;
 
@@ -63,6 +63,7 @@ public class Modelo <T> {
 
 
 	public void cargarDatos() {
+		
 		if(cola.esVacio()){
 			JsonReader reader;
 			try {
@@ -94,6 +95,7 @@ public class Modelo <T> {
 							.get(1).getAsDouble();
 
 					enqueue(c);
+		
 
 				}
 
@@ -160,7 +162,59 @@ public class Modelo <T> {
 		}
 		return mayor;
 	}
+	
+	
+	public Comparable[] copiarComparendos()
+	{
+		Comparable[] copiaComp = null;
+		
+		for(int i = 0; i < cola.darTamano(); i++)
+		{
+			//*Falta
+		}
+		return copiaComp;		
+				
+	}
+	
+	
+	public void shellSort(Comparable datos[])
+	{
+		datos = copiarComparendos();
+		int a = datos.length;
+		Comparable aux;
+		boolean cond;
+		 while(a > 0)
+		 {
+			 a = a/2;
+			 cond = true;
+			 
+			 while(cond)
+			 {
+				 cond = false;
+				 int i = 0;
+				 
+				 while((i + a) <= datos.length-1)
+				 {
+					 if(datos[i].compareTo(datos[i+a]) == 1 ) 
+					 {
+						 aux = datos[i];
+						 datos[i] = datos[i+a];
+						 datos[i+a] = aux;
+						 cond = true;
+						 
+					 }
+					 
+					 i = i + 1;
+				 }
+			 }
+		}
+   }
+	
+	
+		
+	
 }
+
 
 
 

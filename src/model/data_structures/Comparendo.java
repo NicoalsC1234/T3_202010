@@ -65,14 +65,18 @@ public class Comparendo implements Comparable<Comparendo> {
 	}
 
 
-	@Override
+	
 	public int compareTo(Comparendo comparendo) {
-		// TODO Auto-generated method stub
 		
 		if(FECHA_HORA.equals(comparendo.getFECHA_HORA())) 
 		{
-			if (OBJECTID < comparendo.getOBJECTID()) return 1;
-			else return -1;
+			if (OBJECTID > comparendo.getOBJECTID()) 
+				return 1;
+			
+			else if(OBJECTID < comparendo.getOBJECTID())
+				return -1;
+			
+			else return 0;
 		}
 		else return FECHA_HORA.compareTo(comparendo.getFECHA_HORA());
 	}

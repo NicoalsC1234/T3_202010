@@ -2,6 +2,7 @@ package test.logic;
 
 import static org.junit.Assert.*;
 import model.logic.Modelo;
+import view.View;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,7 +21,33 @@ public class TestModelo {
 
 	public void testModelo()
 	{
-		assertTrue(modelo.cargarDatos() != null);
+		
+	}
+	
+	public void testShell()
+	{
+		int[] a = null;
+		int[] b = null;
+	 
+		for(int i = 0; i < 1000; i++)
+		{
+			a[i] = (int)Math.random();
+		}
+		for(int i = 0; i < 1000; i--)
+		{
+			a[i] = (int)Math.random();
+		}
+		
+		Comparable copia_Comparendos [ ] = modelo.copiarComparendos();
+		modelo.shellSort( copia_Comparendos );
+		long startTime = System.currentTimeMillis(); 
+		long endTime = System.currentTimeMillis(); 
+		long duration = endTime - startTime; 
+		View.printMessage("Tiempo de ordenamiento: " + duration + " milisegundos");
+		
+		//* Falta
+		
+		
 	}
 
 }

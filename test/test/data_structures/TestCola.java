@@ -14,8 +14,8 @@ public class TestCola <T>  {
 		
 		public void setUp1() {
 			cola = new Cola<T>();
-			primero = cola.darPrimero();
-			ultimo = cola.darUltimo();
+			primero = (Nodo) cola.darPrimero();
+			ultimo = (Nodo) cola.darUltimo();
 		}
 
 		public void setUp2() {
