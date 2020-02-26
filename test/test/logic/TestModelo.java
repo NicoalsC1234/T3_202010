@@ -43,11 +43,35 @@ public class TestModelo {
 		long startTime = System.currentTimeMillis(); 
 		long endTime = System.currentTimeMillis(); 
 		long duration = endTime - startTime; 
-		View.printMessage("Tiempo de ordenamiento: " + duration + " milisegundos");
+		View.printMessage("Tiempo de ordenamiento shell: " + duration + " milisegundos");
 		
 		//* Falta
 		
 		
+	}
+	
+	public void testMerge()
+	{
+		//* Falta
+		
+		Comparable copia_Comparendos [ ] = modelo.copiarComparendos();
+		modelo.mergeSort( copia_Comparendos );
+		long startTime = System.currentTimeMillis(); 
+		long endTime = System.currentTimeMillis(); 
+		long duration = endTime - startTime; 
+		View.printMessage("Tiempo de ordenamiento merge: " + duration + " milisegundos");
+	}
+	
+	public void testQuick()
+	{
+		//* Falta
+		
+		Comparable copia_Comparendos [ ] = modelo.copiarComparendos();
+		modelo.quickSort( copia_Comparendos );
+		long startTime = System.currentTimeMillis(); 
+		long endTime = System.currentTimeMillis(); 
+		long duration = endTime - startTime; 
+		View.printMessage("Tiempo de ordenamiento: " + duration + " milisegundos");
 	}
 
 }

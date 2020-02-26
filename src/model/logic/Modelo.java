@@ -157,12 +157,53 @@ public class Modelo <T> {
 		}
    }
 	
-	public void MergeSort()
+	public static void mergeSort(Comparable[] arreglo)
 	{
+		Comparable[] aux = new Comparable[arreglo.length];
+		merge(arreglo, aux, 0, arreglo.length);
 		
 	}
 	
-	public void QuickSort()
+	public static void merge(Comparable[] d, Comparable[] aux, int lo, int hi)
+	{
+		
+		if(lo>= hi)
+		{
+			return;
+		}
+		
+		int mid = (lo+hi)/2;
+		merge(d,aux,lo,mid);
+		merge(d,aux,mid+1,hi);
+		mergeHalves(d, aux, lo,hi);
+		
+	}
+	
+	public static void mergeHalves(Comparable[] d, Comparable[] aux, int lo, int hi)
+	{
+		 	int leftEnd = (hi + lo) / 2;
+	        int rightStart = leftEnd + 1;
+	        int size = hi - lo + 1;
+
+	        int left = lo;
+	        int right = rightStart;
+	        int index = lo;
+
+	        while (left <= leftEnd && right <= hi) {
+
+	            if (d[left].compareTo(d[right]) == -1) {
+	                aux[index] = d[left];
+	                left++;
+	            } else {
+	                aux[index] = d[right];
+	                right++;
+
+	            }
+	            index++;
+	        }
+	}
+	
+	public void quickSort(Comparable[] arreglo)
 	{
 		
 		

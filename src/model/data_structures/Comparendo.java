@@ -71,9 +71,9 @@ public class Comparendo implements Comparable<Comparendo> {
 		if(FECHA_HORA.equals(comparendo.getFECHA_HORA())) 
 		{
 			if (OBJECTID > comparendo.getOBJECTID()) 
-				return 1000;
+				return 1;
 			else
-				return -1000000000;
+				return -1;
 		}
 		else return FECHA_HORA.compareTo(comparendo.getFECHA_HORA());
 	}
