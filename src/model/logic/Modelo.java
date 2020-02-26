@@ -48,12 +48,12 @@ public class Modelo <T> {
 
 	public Comparendo darPrimero()
 	{
-		return cola.darPrimero();
+		return cola.darPrimero().getActual();
 	}
 
 	public Comparendo darUltimo()
 	{
-		return cola.darUltimo();
+		return cola.darUltimo().getActual();
 	}
 
 	public Nodo<Comparendo> dequeue()
@@ -107,70 +107,17 @@ public class Modelo <T> {
 		else
 			System.out.println("---");
 	}
-
-	public double[] darMinimax()
-	{
-		double[] mini = new double[4];
-
-		Nodo<Comparendo> es = cola.primero;
-		double lo1 = es.getActual().longitud;
-		double la1 = es.getActual().latitud;
-		double lo2 = es.getActual().longitud;
-		double la2 = es.getActual().latitud;
-		while(es!=null) {
-
-
-			if(es.getActual().longitud > lo1)
-			{
-				lo1 = es.getActual().longitud;
-				mini[0] = lo1;
-			}
-			else if(es.getActual().longitud < lo2){
-				mini[1] = lo2;
-				lo2 = es.getActual().longitud;
-			}
-			if(es.getActual().latitud > la1)
-			{
-				la1 = es.getActual().latitud;
-				mini[2] = la1;
-			}
-			else if(es.getActual().latitud < la2){
-				mini[3] = la2;
-				la2 = es.getActual().latitud;
-			}
-
-			es = es.getSiguiente();
-		}
-
-
-		return mini;
-	}
-
-	public Comparendo MostrarCompMayorOBJECTID()
-	{
-		Comparendo mayor =  darPrimero();
-		Nodo<Comparendo> es = cola.primero;
-		if (mayor != null)
-		{
-			while (es != null){
-				if(es.getActual().OBJECTID > mayor.OBJECTID)
-				{
-					mayor = es.getActual();
-				}
-				es = es.getSiguiente();
-			}
-		}
-		return mayor;
-	}
-	
 	
 	public Comparable[] copiarComparendos()
 	{
-		Comparable[] copiaComp = null;
+		Comparable<Comparendo>[] copiaComp = new Comparable[cola.darTamano()];
+		Nodo<Comparendo> x = null;
 		
 		for(int i = 0; i < cola.darTamano(); i++)
 		{
-			//*Falta
+			x = cola.darPrimero();
+			copiaComp[i] =x.getActual();
+			x = x.getSiguiente();
 		}
 		return copiaComp;		
 				
@@ -209,6 +156,21 @@ public class Modelo <T> {
 			 }
 		}
    }
+	
+	public void MergeSort()
+	{
+		
+	}
+	
+	public void QuickSort()
+	{
+		
+		
+		
+		
+	}
+
+	
 	
 	
 		

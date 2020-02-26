@@ -65,23 +65,25 @@ public class Comparendo implements Comparable<Comparendo> {
 	}
 
 
-	
+	@Override
 	public int compareTo(Comparendo comparendo) {
 		
 		if(FECHA_HORA.equals(comparendo.getFECHA_HORA())) 
 		{
 			if (OBJECTID > comparendo.getOBJECTID()) 
-				return 1;
-			
-			else if(OBJECTID < comparendo.getOBJECTID())
-				return -1;
-			
-			else return 0;
+				return 1000;
+			else
+				return -1000000000;
 		}
 		else return FECHA_HORA.compareTo(comparendo.getFECHA_HORA());
 	}
 	
-	
+	@Override
+	public String toString()
+	{
+		return "Los datos del comparendo son" + OBJECTID +", " + FECHA_HORA + ", " + INFRACCION + ", " + CLASE_VEHI  + ", " +  TIPO_SERVI  + ", " + LOCALIDAD;
+				
+	}
 	
 	
 }

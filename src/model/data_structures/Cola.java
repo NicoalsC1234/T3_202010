@@ -17,14 +17,14 @@ public class Cola<T> {
 		tamano = 0;
 	}
 
-	public T darPrimero()
+	public Nodo<T> darPrimero()
 	{
-		return primero.getActual();
+		return primero;
 	}
 
-	public T darUltimo()
+	public Nodo<T> darUltimo()
 	{
-		return ultimo.getActual();
+		return ultimo;
 	}
 
 	public int darTamano() {
