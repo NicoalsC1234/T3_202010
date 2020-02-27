@@ -47,7 +47,8 @@ public class Controller <T extends Comparable<T>>{
 	                    	view.printMessage("El numero de datos leidos es : " + numero);
 	                    	view.printMessage(modelo.darUltimo().toString());
 	                    	view.printMessage(modelo.darPrimero().toString());
-
+	                    case 2:
+	                    	view.printMessage("la duracion es " + modelo.quick_srt(modelo.copiarComparendos(), 0, modelo.darTamano()));
 	                    
 	                } 
 	                

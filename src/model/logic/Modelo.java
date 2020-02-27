@@ -26,7 +26,7 @@ import model.data_structures.Nodo;
  */
 public class Modelo <T> {
 
-	public static String PATH = "./data/comparendos_dei_2018.geojson"; 
+	public static String PATH = "./data/comparendos_dei_2018_small.geojson"; 
 
 	private Cola<Comparendo> cola;
 
@@ -204,11 +204,12 @@ public class Modelo <T> {
 	}
 	
 	
-	public static void quick_srt(Comparable arreglo[],int low, int n){
-	      int lo = low;
+	public static long quick_srt(Comparable arreglo[],int low, int n){
+	      long startTime = System.currentTimeMillis();
+		int lo = low;
 	      int hi = n;
 	      if (lo >= n) {
-	          return;
+	          return startTime;
 	      }
 	      int mid = (lo + hi) / 2;
 	      while (lo < hi) {
@@ -216,8 +217,7 @@ public class Modelo <T> {
 	              lo++;
 	          }
 	          while (lo<hi && arreglo[hi].compareTo(mid) > 0) {
-	              hi--;
-	          }
+	              hi--; }
 	          if (lo < hi) {
 	              int T = (int) arreglo[lo];
 	              arreglo[lo] = arreglo[hi];
@@ -231,6 +231,8 @@ public class Modelo <T> {
 	      }
 	      quick_srt(arreglo, low, lo);
 	      quick_srt(arreglo, lo == low ? lo+1 : lo, n);
+	      long endTime = System.currentTimeMillis();
+	      return startTime - endTime;
 	   }
 	
 
