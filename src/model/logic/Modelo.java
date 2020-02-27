@@ -203,16 +203,38 @@ public class Modelo <T> {
 	        }
 	}
 	
-	public void quickSort(Comparable[] arreglo)
-	{
-		
-		
-		
-		
-	}
+	
+	public static void quick_srt(Comparable arreglo[],int low, int n){
+	      int lo = low;
+	      int hi = n;
+	      if (lo >= n) {
+	          return;
+	      }
+	      int mid = (lo + hi) / 2;
+	      while (lo < hi) {
+	          while (lo<hi && arreglo[lo].compareTo(mid) < 0) {
+	              lo++;
+	          }
+	          while (lo<hi && arreglo[hi].compareTo(mid) > 0) {
+	              hi--;
+	          }
+	          if (lo < hi) {
+	              int T = (int) arreglo[lo];
+	              arreglo[lo] = arreglo[hi];
+	              arreglo[hi] = T;
+	          }
+	      }
+	      if (hi < lo) {
+	          int T = hi;
+	          hi = lo;
+	          lo = T;
+	      }
+	      quick_srt(arreglo, low, lo);
+	      quick_srt(arreglo, lo == low ? lo+1 : lo, n);
+	   }
+	
 
-	
-	
+	 
 	
 		
 	
