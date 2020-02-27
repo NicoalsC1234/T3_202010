@@ -1,6 +1,8 @@
 package test.logic;
 
 import static org.junit.Assert.*;
+
+import model.data_structures.Comparendo;
 import model.logic.Modelo;
 import view.View;
 
@@ -16,7 +18,7 @@ public class TestModelo {
 	public void setUp1() {
 		
 		modelo= new Modelo();
-		
+	
 	}
 
 	public void testModelo()
@@ -52,10 +54,39 @@ public class TestModelo {
 	
 	public void testMerge()
 	{
-		//* Falta
+		Comparendo primer = new Comparendo();
+		Comparendo segundo = new Comparendo();
+		Comparendo tercer = new Comparendo();
+		segundo.FECHA_HORA = tercer.FECHA_HORA;
+		primer.FECHA_HORA = segundo.FECHA_HORA;
+		primer.OBJECTID = 1;
+		segundo.OBJECTID = 2;
+		tercer.OBJECTID = 3;
 		
-		Comparable copia_Comparendos [ ] = modelo.copiarComparendos();
-		modelo.mergeSort( copia_Comparendos );
+		
+		Comparable copia_Comparendos1 [ ] = {segundo, primer};
+		modelo.mergeSort(copia_Comparendos1);
+		
+		for (int i = 0; i < copia_Comparendos1.length; i++) {
+			assertTrue(copia_Comparendos1[0] == primer);
+		}
+		
+		Comparable copia_Comparendos2 [ ] = {primer, segundo};
+		modelo.mergeSort(copia_Comparendos2);
+		
+		for (int i = 0; i < copia_Comparendos2.length; i++) {
+			assertTrue(copia_Comparendos2[0] == primer);
+		}
+		
+		Comparable copia_Comparendos3 [ ] = {segundo, primer, tercer};
+		modelo.mergeSort(copia_Comparendos3);
+		
+		for (int i = 0; i < copia_Comparendos3.length; i++) {
+			assertTrue(copia_Comparendos3[0] == primer);
+		}
+	
+		Comparable copia_Comparendos4 [ ] = modelo.copiarComparendos();
+		modelo.mergeSort(copia_Comparendos4);
 		long startTime = System.currentTimeMillis(); 
 		long endTime = System.currentTimeMillis(); 
 		long duration = endTime - startTime; 
@@ -65,9 +96,15 @@ public class TestModelo {
 	public void testQuick()
 	{
 		//* Falta
+		Comparendo primer = new Comparendo();
+		Comparendo segundo = new Comparendo();
+		primer.FECHA_HORA = segundo.FECHA_HORA;
+		primer.OBJECTID = 1;
+		segundo.OBJECTID = 2;
 		
-		Comparable copia_Comparendos [ ] = modelo.copiarComparendos();
-		modelo.quickSort( copia_Comparendos );
+		
+		Comparable copia_Comparendos2 [ ] = modelo.copiarComparendos();
+		modelo.quickSort( copia_Comparendos2 );
 		long startTime = System.currentTimeMillis(); 
 		long endTime = System.currentTimeMillis(); 
 		long duration = endTime - startTime; 
