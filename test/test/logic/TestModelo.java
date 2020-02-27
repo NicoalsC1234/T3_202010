@@ -104,11 +104,14 @@ public class TestModelo {
 		
 		
 		Comparable copia_Comparendos2 [ ] = modelo.copiarComparendos();
-		modelo.quickSort( copia_Comparendos2 );
+		modelo.quick_srt(copia_Comparendos2, 0, 2);
 		long startTime = System.currentTimeMillis(); 
 		long endTime = System.currentTimeMillis(); 
 		long duration = endTime - startTime; 
 		View.printMessage("Tiempo de ordenamiento: " + duration + " milisegundos");
+		
+		assertTrue(copia_Comparendos2[0] == primer);
+		assertTrue(copia_Comparendos2[1] == segundo);
 	}
 
 }
